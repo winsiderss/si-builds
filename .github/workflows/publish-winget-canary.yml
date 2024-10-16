@@ -1,0 +1,24 @@
+name: Publish canary to winget
+
+on:
+    workflow_dispatch:
+    release:
+      types: [published]
+
+jobs:
+    winget:
+        name: Publish winget package
+        runs-on: windows-latest
+        steps:
+        - uses: actions/checkout@v4
+        - name: Publish winget manifest
+          run: .\winget\Publish.ps1 -Channel Canary -Version Latest -Output .\winget\ -Submit {{ secrets.WINGET_TOKEN }}
+        - name: Update winget manifest
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: |
+            git config user.name "Johnny Shaw"
+            git config user.email johnny.shaw@live.com
+            git add .
+            git commit -m "update winget manifest"
+            git push

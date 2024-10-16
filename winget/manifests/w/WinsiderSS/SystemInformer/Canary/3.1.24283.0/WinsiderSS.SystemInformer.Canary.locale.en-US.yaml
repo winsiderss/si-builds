@@ -1,3 +1,6 @@
+# Created using wingetcreate 1.6.5.0
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.6.0.schema.json
+
 PackageIdentifier: WinsiderSS.SystemInformer.Canary
 PackageVersion: 3.1.24283.0
 PackageLocale: en-US

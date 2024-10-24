@@ -12,7 +12,7 @@ jobs:
         steps:
         - uses: actions/checkout@v4
         - name: Publish winget manifest
-          run: .\winget\Publish.ps1 -Channel Canary -Version Latest -Output .\winget\ -Submit {{ secrets.WINGET_TOKEN }}
+          run: .\winget\Publish.ps1 -Channel Canary -Version Latest -Output .\winget\ -Submit ${{ secrets.WINGET_TOKEN }}
         - name: Update winget manifest
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

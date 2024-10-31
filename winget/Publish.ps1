@@ -79,9 +79,15 @@ if ($Submit)
 
 $wingetCreateArgs += @($identifier)
 
-$process = Start-Process -FilePath $wingetCreate -ArgumentList $wingetCreateArgs -PassThru -Wait -NoNewWindow
+$process = Start-Process -FilePath $wingetCreate -ArgumentList $wingetCreateArgs -PassThru -NoNewWindow
 
-if ($process.ExitCode -ne 0)
+# HACK to workaround wingetcreate not exiting properly
+if (!$process.WaitForExit(60000))
+{
+    Write-Host "wingetcreate reached timeout... assuming success..."
+    $process.Kill()
+}
+elseif ($process.ExitCode -ne 0)
 {
     Write-Host "wingetcreate failed with exit code: $($process.ExitCode)"
     exit 1

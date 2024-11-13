@@ -1,4 +1,4 @@
-name: Publish canary to winget
+name: Update winget canary manifest
 
 on:
     workflow_dispatch:
@@ -15,7 +15,7 @@ jobs:
             token: ${{ secrets.PUSH_TOKEN }}
             ref: main
         - name: Publish winget manifest
-          run: .\winget\Publish.ps1 -Channel Canary -Version Latest -Output .\winget\ -Submit ${{ secrets.WINGET_TOKEN }}
+          run: .\winget\Publish.ps1 -Channel Canary -Version Latest -Output .\winget\
         - name: Update winget manifest
           run: |
             git config user.name "Johnny Shaw"

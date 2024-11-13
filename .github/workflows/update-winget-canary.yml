@@ -1,4 +1,4 @@
-name: Update winget canary manifest
+name: Update canary winget manifest
 
 on:
     workflow_dispatch:
@@ -7,14 +7,14 @@ on:
 
 jobs:
     winget:
-        name: Publish winget package
+        name: Update winget manifest
         runs-on: windows-latest
         steps:
         - uses: actions/checkout@v4
           with:
             token: ${{ secrets.PUSH_TOKEN }}
             ref: main
-        - name: Publish winget manifest
+        - name: Generate winget manifest
           run: .\winget\Publish.ps1 -Channel Canary -Version Latest -Output .\winget\
         - name: Update winget manifest
           run: |

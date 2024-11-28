@@ -19,7 +19,7 @@ ElevationRequirement: elevatesSelf
 Installers:
 - Architecture: neutral
   InstallerUrl: https://github.com/winsiderss/si-builds/releases/download/3.1.24333/systeminformer-3.1.24333-canary-setup.exe
-  InstallerSha256: D055F69CF64272FA6A110B0C796BF9A150B9786AFDBD42E0B78C77FB34FFF41F
+  InstallerSha256: 21EB3AE7A45D28C5D8A9B446ABB7285D9340489BC3FB16BFDDE2D5FE9E88EDE9
 ManifestType: installer
 ManifestVersion: 1.6.0
 ReleaseDate: 2024-11-28

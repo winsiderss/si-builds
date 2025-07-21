@@ -15,7 +15,9 @@ jobs:
             token: ${{ secrets.PUSH_TOKEN }}
             ref: main
         - name: Publish winget manifest
-          run: .\winget\Publish.ps1 -Channel Canary -Version Latest -Output .\winget\ -Submit ${{ secrets.WINGET_TOKEN }}
+          env:
+            WINGET_CREATE_GITHUB_TOKEN: ${{ secrets.WINGET_CREATE_GITHUB_TOKEN }}
+          run: .\winget\Publish.ps1 -Channel Canary -Version Latest -Output .\winget\ -Submit
         - name: Update winget manifest
           run: |
             git config user.name "Johnny Shaw"

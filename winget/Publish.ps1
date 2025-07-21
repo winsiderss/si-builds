@@ -2,7 +2,7 @@ param (
     [ValidateSet("Canary", "Release")]
     [string]$Channel,
     [string]$Version,
-    [string]$Submit,
+    [switch]$Submit,
     [string]$Output
 )
 
@@ -72,9 +72,8 @@ if ($Output)
 if ($Submit)
 {
     $wingetCreateArgs += @(
-        "--submit",
-        "--token", $Submit
-        )
+        "--submit"
+    )
 }
 
 $wingetCreateArgs += @($identifier)

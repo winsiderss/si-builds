@@ -5,12 +5,15 @@ on:
     release:
       types: [published]
 
+permissions:
+    contents: read
+
 jobs:
     winget:
         name: Publish winget package
         runs-on: windows-latest
         steps:
-        - uses: actions/checkout@v4
+        - uses: actions/checkout@v7
           with:
             token: ${{ secrets.PUSH_TOKEN }}
             ref: main

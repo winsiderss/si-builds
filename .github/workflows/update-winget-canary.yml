@@ -3,12 +3,15 @@ name: Update canary winget manifest
 on:
     workflow_dispatch:
 
+permissions:
+    contents: read
+
 jobs:
     winget:
         name: Update winget manifest
         runs-on: windows-latest
         steps:
-        - uses: actions/checkout@v4
+        - uses: actions/checkout@v7
           with:
             token: ${{ secrets.PUSH_TOKEN }}
             ref: main

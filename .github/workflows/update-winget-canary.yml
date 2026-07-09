@@ -20,7 +20,7 @@ jobs:
         - name: Update winget manifest
           run: |
             git config user.name "Johnny Shaw"
-            git config user.email johnny.shaw@live.com
+            git config user.email johnny@jxy.dev
             git add .
             git commit -m "update winget manifest"
             git push

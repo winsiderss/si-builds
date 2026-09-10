@@ -17,6 +17,10 @@ jobs:
           with:
             token: ${{ secrets.PUSH_TOKEN }}
             ref: main
+        - name: Sync winget-pkgs fork
+          env:
+            GH_TOKEN: ${{ secrets.WINGET_CREATE_GITHUB_TOKEN }}
+          run: gh repo sync jxy-s/winget-pkgs --force
         - name: Publish winget manifest
           env:
             WINGET_CREATE_GITHUB_TOKEN: ${{ secrets.WINGET_CREATE_GITHUB_TOKEN }}
